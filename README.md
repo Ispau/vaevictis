@@ -71,7 +71,7 @@ Music starts enabled. It keeps the same tempo and arrangement during normal figh
 
 ## Creative and technical credits
 
-- **Ideas, script and character design:** Halfjourney.
+- **Ideas, script and character design:** Halfjourney Lab. URL:https://medium.com/@halfjourney
 - **Pixel-art production:** PixelLab.
 - **Music:** original compositions synthesized with the **Web Audio API**, using programmed notes, chords, oscillators, filters, envelopes and percussion.
 - **Programming orchestration:** the **GPT6.1 model**, with human supervision.
