@@ -54,7 +54,7 @@ export function drawPixelHud(ctx,game,art={}){
  magics.forEach(([kind,key,color],i)=>{const x=190+i*52,ready=(p.mana?.[kind]||0)>=100;panel(ctx,x,27,48,27);pixelText(ctx,key,x+4,31,color);meter(ctx,x+13,30,31,9,(p.mana?.[kind]||0)/100,color,C.white);pixelText(ctx,ready?'READY':kind==='fist'?'FIST':kind==='storm'?'STORM':'LEGION',x+4,44,ready?C.gold:C.white);});
  pixelText(ctx,p.shield?'V SHIELD':'NO SHIELD',359,38,p.shield?C.gold:C.steel);
  if(game.combo>=2){pixelText(ctx,`${game.combo} HITS`,385,55,C.gold);meter(ctx,385,66,77,5,(game.comboTimer||0)/(game.comboDuration||3),'#e9ac55','#f6e9cc');}
- if(game.boss&&!game.boss.dead&&game.boss.hp>0){const b=game.boss;panel(ctx,116,242,248,22);pixelText(ctx,b.name||'KING OF HUNGER',122,246,C.gold);meter(ctx,122,256,236,5,b.hp/b.maxHp,C.red,'#f29681');}
- else {rect(ctx,7,255,466,10,'#10131dcc');pixelText(ctx,'J SWORD   K HEAVY   I HOLD SHIELD   SPACE JUMP   L DODGE',12,257,C.white);}
+ if(game.boss&&!game.boss.dead&&game.boss.hp>0){const b=game.boss;panel(ctx,116,242,248,22);pixelText(ctx,b.name||'KING OF HUNGER',122,246,C.gold);meter(ctx,122,256,236,5,b.hp/b.maxHp,C.red,'#f29681');pixelText(ctx,'O OPTIONS',380,257,C.white);}
+ else {rect(ctx,7,255,466,10,'#10131dcc');pixelText(ctx,'J SWORD   K HEAVY   I HOLD SHIELD   SPACE JUMP   L DODGE   O OPTIONS',12,257,C.white);}
  ctx.restore();
 }

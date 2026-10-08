@@ -236,6 +236,13 @@ document.addEventListener('keydown', event => {
     if (event.repeat) return;
     event.preventDefault(); if(optionsOpen)closeOptions();else if (guideOpen) closeGuide(); else if (game.state === 'paused') resume(); else pause(); return;
   }
+  if (event.code === 'KeyO') {
+    event.preventDefault();
+    if (event.repeat || guideOpen) return;
+    if (optionsOpen) closeOptions();
+    else if (['menu','playing','paused'].includes(game.state)) openOptions();
+    return;
+  }
   if (event.code === 'KeyM' && !event.repeat && !guideOpen) { settings.muted = !settings.muted; updateSettings(); return; }
   const action = mappings[event.code];
   if (!action || game.state !== 'playing' || guideOpen || optionsOpen) return;

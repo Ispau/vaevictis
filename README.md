@@ -27,6 +27,7 @@ Open the published GitHub Pages link in a current desktop browser. Press **Start
 | X | Storm magic |
 | C | Legion magic |
 | Escape | Pause / resume; close an open panel |
+| O | Open / close Options; opening Options during play pauses the game |
 | M | Mute / unmute all audio |
 
 ## Gamepad and joystick controls
