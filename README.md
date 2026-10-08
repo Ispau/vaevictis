@@ -88,7 +88,7 @@ This folder is a standalone static website. It contains the public game files an
 4. Select **Deploy from a branch**, choose the branch containing the files, and select **/(root)**.
 5. Save and wait for deployment. Share the Pages URL shown by GitHub.
 
-Do not place another `vaevictus` folder around the files when publishing from the repository root. Assets use relative paths so the game can run at a project URL such as `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
+Do not place another `vaevictis` folder around the files when publishing from the repository root. Assets use relative paths so the game can run at a project URL such as `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
 
 No Node server or build step is required for hosting. For local testing, serve this folder over HTTP with a static web server rather than opening `index.html` directly, because browsers restrict module and JSON loading from `file://` URLs.
 
