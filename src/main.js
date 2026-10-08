@@ -25,10 +25,7 @@ const storage = {
 const settings = storage.get(SETTINGS, { muted: false, music: true, reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches });
 if (settings.audioDefaultsVersion !== 2) { settings.muted = false; settings.music = true; settings.audioDefaultsVersion = 2; }
 settings.crt ??= true;
-if (settings.crtDefaultsVersion !== 1) {
-  settings.crt = true; settings.crtClassic = true; settings.crtDefaultsVersion = 1;
-}
-settings.crtClassic ??= true;
+settings.crtClassic ??= false;
 const audio = new AudioSystem({ muted: settings.muted, musicEnabled: settings.music, volume: 0.5 });
 const renderer = new Renderer($('game-canvas'));
 renderer.setOptions({ reducedMotion: settings.reducedMotion });

@@ -63,7 +63,7 @@ USB arcade joysticks that expose a compatible gamepad mapping can also be used. 
 
 ## Options and saved preferences
 
-The **CRT filter and Classic CRT are enabled by default**. Classic CRT adds subtle curved-glass distortion and a smooth black rounded screen edge. Turn off Classic CRT to retain the normal scanline filter; turn off CRT Filter to remove both effects.
+The **CRT Filter is enabled by default; Classic CRT is unchecked by default**. Classic CRT optionally adds subtle curved-glass distortion and a smooth black rounded screen edge. Turn on Classic CRT for curved glass; turn off CRT Filter to remove both effects. Existing saved preferences are respected rather than overwritten by updates.
 
 Sound, music, CRT Filter, Classic CRT and Reduced Motion preferences are stored in the browser's **localStorage** and restored on later visits. Progress and the best score are also stored locally. Storage belongs to the same browser profile and site origin, and does not synchronize between devices. Clearing site data removes these settings and saves. If browser storage is unavailable, the game still runs but cannot retain preferences or progress.
 
