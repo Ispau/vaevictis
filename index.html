@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101116">
+  <meta name="description" content="VAE VICTIS. A pixel-art arcade of swords, monsters and barbarian fury.">
+  <title>VAE VICTIS — King of Hunger</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101116'/%3E%3Cpath d='M6 23V9h7V5h6v4h7v14H6zm5-5h10v-4H11z' fill='%23ecc17b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./assets/arcade.css">
+</head>
+<body>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none">
+    <defs>
+      <filter id="crt-classic-curvature" x="0" y="0" width="1" height="1" filterUnits="objectBoundingBox" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+        <feImage href="./assets/crt-curvature-map.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="curvature" />
+        <feDisplacementMap in="SourceGraphic" in2="curvature" scale="0.038" xChannelSelector="R" yChannelSelector="G" result="curved-screen" />
+        <feImage href="./assets/crt-glass-mask.svg" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="glass-outline" />
+        <feComposite in="curved-screen" in2="glass-outline" operator="in" />
+      </filter>
+    </defs>
+  </svg>
+  <div id="arcade-machine" class="arcade-machine">
+    <header class="cabinet-marquee" aria-label="Vae Victis arcade cabinet"><img src="./assets/vae-victis-title-pixel.png" alt="VAE VICTIS"><small>STEEL • BONES • GLORY</small></header>
+    <div class="cabinet-bezel">
+  <main id="game-shell" class="game-shell" data-state="menu" aria-label="VAE VICTIS: King of Hunger">
+    <canvas id="game-canvas" width="960" height="540" tabindex="0" aria-label="Game world. A and D move. Space jumps. J swings the sword. K performs a heavy attack. Hold I to guard with the shield. L dodges. Q unleashes rage."></canvas>
+    <div class="screen-vignette" aria-hidden="true"></div>
+    <div class="crt-overlay" aria-hidden="true"></div>
+    <div id="game-entry-fade" class="game-entry-fade" aria-hidden="true"></div>
+    <section id="credits-screen" class="credits-screen" role="dialog" aria-modal="true" aria-label="Game credits" hidden>
+      <canvas id="credits-canvas" width="512" height="288" aria-hidden="true"></canvas>
+      <button id="skip-credits-button" class="text-button" type="button">SKIP CREDITS</button>
+    </section>
+    <section id="story-screen" class="story-screen" role="dialog" aria-modal="true" aria-label="Brutus: the oath" hidden>
+      <canvas id="story-canvas" width="512" height="288" aria-hidden="true"></canvas>
+      <button id="skip-story-button" class="text-button" type="button">SKIP STORY</button>
+    </section>
+    <section id="arcade-boot" class="arcade-boot" aria-label="Arcade system startup">
+      <pre id="boot-log" aria-live="polite">CAPCON SYSTEM / VV-01</pre>
+      <div id="boot-brand" hidden><img src="./assets/capcon-pixel.png" alt="CAPCON"><p>VAE VICTIS / ARCADE SYSTEM</p></div>
+      <button id="skip-boot" type="button">SKIP BOOT [ENTER]</button>
+    </section>
+
+    <section id="menu-screen" class="menu-screen screen" aria-labelledby="game-title">
+      <header class="menu-topline">
+        <span class="studio-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2h6v4h4v5h3v5h-5v6H7v-6H2v-5h3V6h4zm1 7v5h4V9z" fill="currentColor"/></svg> AN ARCADE WITH NO MANNERS</span>
+        <span class="edition-label">PIXEL ART <span class="small-star">✦</span> BIG SWORD</span>
+      </header>
+      <div class="menu-content">
+        <div class="eyebrow"><span class="pixel-line"></span> A BARBARIAN ADVENTURE</div>
+        <h1 id="game-title" class="game-title"><img src="./assets/vae-victis-title-v2-pixel.png" alt="VAE VICTIS"></h1>
+        <p class="game-subtitle">KING OF HUNGER</p>
+        <p class="menu-description">The dead have returned.<br>They ate your dinner.</p>
+        <div class="menu-actions">
+          <button id="start-button" class="button button-primary" type="button"><span>START GAME</span></button>
+          <button id="continue-button" class="button button-secondary" type="button" hidden>CONTINUE <span aria-hidden="true">↗</span></button>
+          <button id="menu-options-button" class="button button-secondary" type="button">OPTIONS</button>
+        </div>
+        <div class="menu-meta"><span class="status-dot"></span><span id="loading-label">PREPARING THE REALM...</span></div>
+      </div>
+      <div class="menu-side-note" aria-hidden="true"><span>BIG SWORD.</span><span>NO DIPLOMACY.</span><i></i><span class="note-number">01 — 03</span></div>
+      <footer class="menu-footer">
+        <div class="menu-utility">
+          <button id="menu-guide-button" class="text-button" type="button"><span class="keycap">?</span> HOW TO FIGHT</button>
+          <button id="menu-credits-button" class="text-button" type="button">CREDITS</button>
+          <button id="menu-sound-button" class="text-button sound-control" type="button" aria-label="Mute sound" aria-pressed="true"><svg class="sound-on-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3V9zm12-1v8m4-11v14" fill="none" stroke="currentColor" stroke-width="2"/></svg><svg class="sound-off-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3V9zm13 0 5 6m0-6-5 6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SOUND</span></button>
+        </div>
+        <div class="record-block"><span>BEST SLAUGHTER</span><strong id="best-value">000000</strong><span class="record-unit">PTS</span></div>
+      </footer>
+    </section>
+
+    <section id="hud" class="hud" aria-label="Game status" hidden>
+      <div class="hero-status">
+        <div class="hero-portrait" aria-hidden="true"><svg viewBox="0 0 36 40" shape-rendering="crispEdges"><path d="M9 3h18v4h4v23h-5v7H10v-7H5V7h4" fill="#131923"/><path d="M11 7h14v3h4v12h-4v8H11v-8H7V10h4" fill="#ba7952"/><path d="M11 8h14v4H11zm0 8h5v3h-5zm10 0h5v3h-5" fill="#ecc18a"/><path d="M10 13h7v3h-7zm10 0h7v3h-7" fill="#161a22"/><path d="M15 22h8v3h-8" fill="#201c23"/><path d="M14 22h8v1h-8" fill="#fff2ce"/><path d="M6 31h9v-4h7v4h8v9H6" fill="#cb8b5a"/><path d="M6 32h4v8H6zm20 0h4v8h-4" fill="#57baad"/><path d="M7 5h22v5H7zm-2 5h5v18H5zm21 0h5v18h-5" fill="#171920"/></svg><span class="portrait-corner"></span></div>
+        <div class="hero-meters">
+          <div class="hero-name-row"><strong>BRUTUS</strong><span id="health-value">100 / 100</span></div>
+          <div id="health-meter" class="meter health-meter" role="meter" aria-label="Health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="health-fill" class="meter-fill"></span><span class="meter-segments" aria-hidden="true"></span></div>
+          <div class="rage-row"><div id="rage-meter" class="meter rage-meter" role="meter" aria-label="Rage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="rage-fill" class="meter-fill" style="width:0%"></span></div><span class="rage-key">Q</span></div>
+          <div class="rage-caption"><span>RAGE</span><span id="rage-value">0%</span></div>
+        </div>
+      </div>
+      <div class="stage-status"><div><span id="stage-number">ACT I</span><i aria-hidden="true"></i><span id="stage-name">Sunset Ruins</span></div><div class="stage-track"><span id="stage-progress" style="width:0%"></span></div></div>
+      <div class="score-status"><span>SCORE</span><strong id="score-value">000000</strong></div>
+      <div class="hud-actions"><button id="sound-button" class="icon-button sound-control" type="button" aria-label="Mute sound" aria-pressed="true"><svg class="sound-on-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3V9zm12-1v8m4-11v14" fill="none" stroke="currentColor" stroke-width="2"/></svg><svg class="sound-off-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3V9zm13 0 5 6m0-6-5 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button id="pause-button" class="icon-button" type="button" aria-label="Pause game"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z" fill="currentColor"/></svg></button></div>
+      <div id="combo-display" class="combo-display" hidden><span id="combo-title">COMBO</span><strong><span id="combo-value">2</span><small>×</small></strong><div class="combo-track"><span id="combo-fill"></span></div></div>
+      <div id="boss-hud" class="boss-hud" hidden><div class="boss-title"><span class="boss-crown" aria-hidden="true">♛</span><strong id="boss-name">GORGOR - KING OF HUNGER</strong><span id="boss-health-value">100%</span></div><div class="boss-meter"><span id="boss-health-fill"></span></div></div>
+      <div class="hud-footer"><span id="checkpoint-label">SUNSET RUINS</span><span id="input-hint">A / D MOVE · SPACE JUMP · J / K ATTACK · I BLOCK · Z/X/C MAGIC</span></div>
+    </section>
+
+    <div id="message-toast" class="message-toast" role="status" hidden><span aria-hidden="true">✦</span><p id="message-text"></p><span aria-hidden="true">✦</span></div>
+
+    <section id="pause-screen" class="overlay-screen screen" aria-labelledby="pause-title" hidden>
+      <div class="overlay-panel pause-panel">
+        <p class="eyebrow centered">EVEN BARBARIANS BREATHE</p>
+        <h2 id="pause-title" class="screen-title">PAUSE</h2>
+        <p class="screen-description">The horde can wait a moment.</p>
+        <div class="stacked-actions"><button id="resume-button" class="button button-primary" type="button">BACK TO WAR <span aria-hidden="true">▶</span></button><button id="pause-restart-button" class="button button-secondary" type="button">START OVER</button></div>
+        <div class="settings-row"><label class="toggle-label"><input id="music-toggle" type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span>MUSIC</label><label class="toggle-label"><input id="motion-toggle" type="checkbox"><span class="toggle-track" aria-hidden="true"></span>REDUCED MOTION</label></div>
+        <div class="panel-footer"><button id="pause-guide-button" class="text-button" type="button">CONTROLS</button><button id="pause-options-button" class="text-button" type="button">OPTIONS</button><button id="pause-menu-button" class="text-button" type="button">MAIN MENU</button></div>
+      </div>
+    </section>
+
+    <section id="options-screen" class="overlay-screen screen options-screen" role="dialog" aria-modal="true" aria-labelledby="options-title" hidden>
+      <div class="overlay-panel options-panel">
+        <p class="eyebrow centered">SYSTEM CONFIGURATION</p><h2 id="options-title" class="screen-title">OPTIONS</h2>
+        <div class="arcade-options">
+          <label class="toggle-label"><input id="options-sound-toggle" type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span>SOUND</label>
+          <label class="toggle-label"><input id="options-music-toggle" type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span>MUSIC</label>
+          <label class="toggle-label"><input id="crt-toggle" type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span>CRT FILTER</label>
+          <label class="toggle-label"><input id="crt-classic-toggle" type="checkbox"><span class="toggle-track" aria-hidden="true"></span>CLASSIC CRT</label>
+          <label class="toggle-label"><input id="options-motion-toggle" type="checkbox"><span class="toggle-track" aria-hidden="true"></span>REDUCED MOTION</label>
+        </div>
+        <p class="screen-description">SCANLINES • PHOSPHOR • GLASS</p>
+        <div class="stacked-actions"><button id="fullscreen-button" class="button button-secondary" type="button">FULL SCREEN</button><button id="close-options-button" class="button button-primary" type="button">RETURN</button></div>
+      </div>
+    </section>
+
+    <section id="gameover-screen" class="overlay-screen screen" aria-labelledby="death-title" hidden>
+      <div class="overlay-panel death-panel"><span class="outcome-icon death-icon" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M12 4h16v4h4v4h4v16h-8v8H12v-8H4V12h4V8h4zm-2 12v8h8v-8zm12 0v8h8v-8zm-4 12v4h4v-4z" fill="currentColor"/></svg></span><p class="eyebrow centered">LEGENDS HAVE BAD DAYS TOO</p><h2 id="death-title" class="screen-title">DOWN, NOT DONE<span>.</span></h2><p class="screen-description">The dead fight dirty. Get back up.</p><div class="result-stats three-stats"><div><span>SCORE</span><strong id="death-score">000000</strong></div><div><span>KILLS</span><strong id="death-kills">0</strong></div><div><span>BEST COMBO</span><strong id="death-combo">0×</strong></div></div><div class="stacked-actions"><button id="retry-button" class="button button-primary" type="button">TRY AGAIN <span aria-hidden="true">↻</span></button></div><button id="death-menu-button" class="text-button outcome-menu-button" type="button">MAIN MENU</button></div>
+    </section>
+
+    <section id="victory-screen" class="overlay-screen victory-screen screen" aria-labelledby="victory-title" hidden>
+      <div class="overlay-panel victory-panel"><p class="eyebrow centered">THE KINGDOM IS SAFE. MOSTLY.</p><div class="victory-heading"><div class="rank-seal" aria-label="Rank earned"><span>RANK</span><strong id="victory-rank">S</strong></div><div><h2 id="victory-title" class="screen-title">KING OF<br>THE FEAST<span>.</span></h2></div></div><p class="screen-description">One crown. A mountain of bones. Time for dinner.</p><p id="new-record" class="new-record" hidden>✦ NEW PERSONAL BEST ✦</p><div class="result-stats four-stats"><div><span>SCORE</span><strong id="victory-score">000000</strong></div><div><span>KILLS</span><strong id="victory-kills">0</strong></div><div><span>BEST COMBO</span><strong id="victory-combo">0×</strong></div><div><span>TIME</span><strong id="victory-time">00:00</strong></div></div><div class="stacked-actions"><button id="play-again-button" class="button button-primary" type="button">ONE MORE ROUND? <span aria-hidden="true">↻</span></button></div><button id="victory-menu-button" class="text-button outcome-menu-button" type="button">MAIN MENU</button></div>
+    </section>
+
+    <section id="guide-screen" class="overlay-screen guide-screen screen" role="dialog" aria-modal="true" aria-labelledby="guide-title" hidden>
+      <div class="guide-panel"><header class="guide-header"><div><p class="eyebrow">THE BARBARIAN FIELD MANUAL</p><h2 id="guide-title">THE ART OF STEEL<span>.</span></h2></div><button id="close-guide-button" class="icon-button" type="button" aria-label="Close controls"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" stroke="currentColor" stroke-width="2"/></svg></button></header><div class="guide-columns"><section><h3><span>01</span> YOUR ARSENAL</h3><dl class="control-list"><div><dt>MOVE</dt><dd><kbd>A</kbd><kbd>D</kbd><span>or ← →</span></dd></div><div><dt>JUMP</dt><dd><kbd class="wide-key">SPACE</kbd></dd></div><div><dt>SWORD SLASH</dt><dd><kbd>J</kbd></dd></div><div><dt>HEAVY SLASH</dt><dd><kbd>K</kbd></dd></div><div><dt>HOLD SHIELD</dt><dd><kbd>I</kbd><span>hold to guard</span></dd></div><div><dt>DODGE</dt><dd><kbd>L</kbd></dd></div><div><dt>BARBARIAN RAGE</dt><dd><kbd>Q</kbd><span>when full</span></dd></div><div><dt>PAUSE</dt><dd><kbd class="wide-key">ESC</kbd></dd></div></dl></section><section class="combo-guide"><h3><span>02</span> COMBAT DRILLS</h3><article><div class="combo-keys"><kbd>J</kbd><i>›</i><kbd>J</kbd><i>›</i><kbd>J</kbd></div><h4>THREE-CUT COMBO</h4><p>Tap J in rhythm for three sword cuts. The last strike sends enemies flying.</p></article><article><div class="combo-keys"><kbd>J</kbd><i>›</i><kbd>J</kbd><i>›</i><kbd>K</kbd></div><h4>BONE BREAKER</h4><p>Finish with K for a crushing heavy slash that launches enemies.</p></article><article><div class="combo-keys"><kbd class="wide-key">SPACE</kbd><i>+</i><kbd>J</kbd></div><h4>DEATH FROM ABOVE</h4><p>Jump and press J to slash in the air. Hold I on the ground to raise your shield.</p></article><article><div class="combo-keys"><kbd>Z</kbd><kbd>X</kbd><kbd>C</kbd></div><h4>SUPER ATTACKS</h4><p>Fill mana by fighting. Z: Sky Fist. X: Judgment Storm. C: Legion. Controller: hold RT + X / Y / A.</p></article></section></div><footer class="guide-bottom"><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h12l4 13-3 2-5-4h-4l-5 4-3-2zm1 4v6m-3-3h6m6-2h2m0 4h2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><p><strong>CONTROLLER</strong> Stick move · A jump · X sword · Y heavy · B dodge · LB guard · RB rage</p></div><span class="guide-tip">FIGHT. FEAST. REPEAT.</span></footer></div>
+    </section>
+
+    <div id="touch-controls" class="touch-controls" aria-label="Touch controls" hidden>
+      <div class="touch-magic"><button class="touch-button" data-input="magicFist" type="button" aria-label="Sky fist magic">FIST</button><button class="touch-button" data-input="magicStorm" type="button" aria-label="Judgment storm magic">STORM</button><button class="touch-button" data-input="magicLegion" type="button" aria-label="Legion magic">LEGION</button></div>
+      <div class="touch-directions"><button class="touch-button direction-button" data-input="left" type="button" aria-label="Move left">◀</button><button class="touch-button direction-button" data-input="right" type="button" aria-label="Move right">▶</button></div>
+      <div class="touch-actions"><button class="touch-button touch-defend" data-input="defend" type="button" aria-label="Hold shield">GUARD</button><button class="touch-button touch-special" data-input="special" type="button" aria-label="Barbarian rage">RAGE</button><button class="touch-button touch-dash" data-input="dash" type="button" aria-label="Dodge">DODGE</button><button class="touch-button touch-heavy" data-input="heavy" type="button" aria-label="Heavy slash">HEAVY</button><button class="touch-button touch-jump" data-input="jump" type="button" aria-label="Jump">JUMP</button><button class="touch-button touch-attack" data-input="attack" type="button" aria-label="Sword slash">SWORD</button></div>
+    </div>
+    <div id="live-announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  </main>
+    </div>
+    <footer class="cabinet-controls"><div class="cabinet-stick" aria-hidden="true"></div><span class="cabinet-player">1 PLAYER<br><small>J / K ATTACK • I GUARD</small></span><div class="cabinet-buttons" aria-hidden="true"><i></i><i></i><i></i></div><span class="coin-slot" aria-hidden="true">FREE PLAY</span></footer>
+  </div>
+  <p class="rotate-hint"><span aria-hidden="true">↻</span> Rotate your phone for the full battlefield.</p>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

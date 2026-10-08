@@ -1,0 +1,139 @@
+/* Pixel interface inside a photographic 1990s arcade cabinet. */
+html,body{background:#080b15}
+body{background:repeating-linear-gradient(90deg,#080b15 0 46px,#0d1323 46px 48px);font-family:VaePixel,monospace}
+.arcade-machine{width:min(94vw,calc((100svh - 165px)*1.777778 + 48px));padding:12px 20px 0;background:#18233a;border:4px solid #0b101d;box-shadow:4px 0 #435270,-4px 0 #435270,0 7px #02040a,0 0 0 8px #090e1a;position:relative;flex:none;image-rendering:pixelated}
+.arcade-machine:before,.arcade-machine:after{content:'';position:absolute;top:95px;bottom:60px;width:8px;background:#a87836;box-shadow:3px 0 #f1d078,-3px 0 #432e1b}
+.arcade-machine:before{left:4px}.arcade-machine:after{right:4px}
+.cabinet-marquee{height:64px;background:#0b142b;border:3px solid #a87836;box-shadow:inset 0 0 0 3px #252a33,inset 0 0 0 5px #46718a;position:relative;display:flex;justify-content:center;align-items:center;gap:24px;color:#f1d078;margin-bottom:12px}
+.cabinet-marquee strong{font:32px/1 VaePixel,monospace;letter-spacing:3px;text-shadow:2px 2px #8a4a3a,4px 4px #0b0d13;margin-bottom:12px}
+.cabinet-marquee small{position:absolute;bottom:7px;font-size:8px;letter-spacing:2px;color:#72a0af}
+.marquee-wing{font-size:22px;color:#c73332;text-shadow:2px 2px #432e1b}
+.cabinet-bezel{padding:8px;background:#080b13;border:4px solid #3a4048;border-top-color:#5b6168;border-left-color:#5b6168;box-shadow:inset 0 0 0 2px #171a21}
+.game-shell{width:100%;box-shadow:none;background:#0b0d13;clip-path:polygon(1% 0,99% 0,99% 1.5%,100% 1.5%,100% 98.5%,99% 98.5%,99% 100%,1% 100%,1% 98.5%,0 98.5%,0 1.5%,1% 1.5%)}
+.cabinet-controls{height:58px;position:relative;display:flex;align-items:center;gap:20px;padding:5px 20px;background:#294861;border-top:4px solid #72a0af;box-shadow:inset 0 -6px #182a3d;color:#f3e7c9}
+.cabinet-stick{width:38px;height:20px;background:#0b0d13;position:relative;box-shadow:3px 3px #46718a;flex:none}
+.cabinet-stick:before{content:'';position:absolute;width:8px;height:29px;background:#8b8f8c;left:15px;bottom:10px;box-shadow:3px 0 #3a4048}
+.cabinet-stick:after{content:'';position:absolute;left:6px;bottom:29px;width:26px;height:20px;background:#c73332;box-shadow:inset -5px -5px #690f18,inset 4px 3px #e4a06d;clip-path:polygon(20% 0,80% 0,80% 15%,100% 15%,100% 85%,80% 85%,80% 100%,20% 100%,20% 85%,0 85%,0 15%,20% 15%)}
+.cabinet-player{font-size:11px;line-height:1.8;flex:1}.cabinet-player small{font-size:7px;color:#72a0af}
+.cabinet-buttons{display:flex;gap:9px}.cabinet-buttons i{display:block;width:28px;height:22px;background:#c73332;box-shadow:inset -5px -4px #690f18,inset 3px 3px #e4a06d;clip-path:polygon(20% 0,80% 0,80% 15%,100% 15%,100% 85%,80% 85%,80% 100%,20% 100%,20% 85%,0 85%,0 15%,20% 15%)}
+.cabinet-buttons i:nth-child(2){background:#d6a84b;box-shadow:inset -5px -4px #72502a,inset 3px 3px #f1d078}.cabinet-buttons i:nth-child(3){background:#46718a;box-shadow:inset -5px -4px #182a3d,inset 3px 3px #72a0af}
+.coin-slot{font-size:8px;background:#0b0d13;border:3px solid #5b6168;padding:8px;color:#f1d078;white-space:nowrap}
+/* The filter covers the game and all menu layers, never intercepting input. */
+.crt-overlay{position:absolute;inset:0;z-index:90;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(199,51,50,.035) 0 1px,rgba(105,148,79,.025) 1px 2px,rgba(70,113,138,.045) 2px 3px);box-shadow:inset 0 0 4cqw 1cqw #0007}
+.crt-overlay:after{content:'';position:absolute;inset:0;border:1px solid #c7c4b815;box-shadow:inset 0 1cqw 2cqw #f3e7c909}
+.crt-off .crt-overlay{display:none}.reduced-motion .crt-overlay{opacity:.65}
+/* Opt-in URL trial: mild barrel distortion and curved glass, including the HUD. */
+.crt-classic-preview .cabinet-bezel .game-shell{filter:url('#crt-classic-curvature');clip-path:inset(0 round 3% / 5%)}
+.crt-classic-preview .crt-overlay{background:radial-gradient(ellipse at 50% 43%,transparent 48%,#0004 100%),repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(199,51,50,.035) 0 1px,rgba(105,148,79,.025) 1px 2px,rgba(70,113,138,.045) 2px 3px);box-shadow:inset 0 0 3cqw .35cqw #0008}
+.crt-classic-preview .crt-overlay:after{border-radius:3% / 5%;background:radial-gradient(ellipse at 48% -20%,#f0f6ff0b,transparent 55%);box-shadow:inset 0 .3cqw .65cqw #eef4ff18}
+.screen-vignette{display:none}
+/* Character-select-era typography, hard borders, selection arrows and flat fills. */
+.screen,.screen *{font-family:VaePixel,monospace;backdrop-filter:none;border-radius:0;animation:none!important;transition:none!important}
+.menu-screen{background:#08122c8c;padding:0}
+.menu-topline{position:absolute;left:4cqw;right:4cqw;top:2.2cqw;font-size:.9cqw;letter-spacing:0;color:#f3e7c9}
+.studio-mark svg,.small-star,.menu-side-note,.title-period,.game-title>.title-period,.menu-meta,.menu-description{display:none}
+.studio-mark{font-size:0}.studio-mark:after{content:'1UP';font-size:1.2cqw;color:#f3e7c9;text-shadow:.2cqw .2cqw #690f18}
+.edition-label{font-size:0}.edition-label:after{content:'FREE PLAY';font-size:1.2cqw;color:#f1d078}
+.menu-content{position:absolute;top:7cqw;left:8cqw;right:8cqw;text-align:center;display:flex;flex-direction:column;align-items:center}
+.menu-content .eyebrow{font-size:1cqw;color:#72a0af;letter-spacing:.15cqw;margin:0 0 1.2cqw}.pixel-line{display:none}
+.game-title{font-size:7.5cqw;line-height:1.15;margin:0;color:#f1d078;letter-spacing:0;transform:none;font-weight:400;text-shadow:.3cqw .3cqw #c73332,.6cqw .6cqw #432e1b,.8cqw .8cqw #0b0d13}
+.game-subtitle{font-size:1.2cqw;line-height:1.3;letter-spacing:.35cqw;color:#f3e7c9;margin:1.6cqw 0 3cqw;text-shadow:.2cqw .2cqw #182a3d}
+.menu-actions{width:34cqw;align-items:stretch;gap:.55cqw}
+.menu-actions .button{font-size:1.5cqw}
+.button{min-width:0;min-height:4.3cqw;padding:.7cqw 2cqw;font-size:1.2cqw;letter-spacing:.1cqw;line-height:1.3;border:2px solid #46718a;background:#182a3d;color:#f3e7c9;box-shadow:inset 2px 2px #294861,3px 3px #0b0d13;clip-path:none;justify-content:center;font-weight:400}
+.button svg,.button>span:last-child:not(:first-child){display:none}
+.button-primary{color:#f1d078;background:#182a3d;border-color:#d6a84b;box-shadow:inset 2px 2px #294861,3px 3px #0b0d13}
+.button:before{content:'>';color:#f1d078;position:absolute;margin-left:-27cqw;visibility:hidden}
+.button:hover,.button:focus-visible{background:#294861;border-color:#f1d078;color:#f1d078;transform:none;outline:2px solid #f3e7c9;outline-offset:2px}
+.button:hover:before,.button:focus-visible:before{visibility:visible}
+.menu-footer{left:4cqw;right:4cqw;bottom:2.5cqw;border-top:2px solid #294861;padding-top:1.2cqw}
+.menu-utility{gap:2cqw}.text-button{font-size:.9cqw;letter-spacing:0;color:#f3e7c9;padding:.5cqw;background:none;border:none}
+.text-button:hover,.text-button:focus-visible{color:#f1d078;outline:1px solid #f1d078;outline-offset:3px}
+.record-block{gap:.7cqw}.record-block span{font-size:.65cqw}.record-block strong{font-size:1.2cqw;color:#f1d078}
+.menu-sound-button,.sound-control svg{shape-rendering:crispEdges}
+.overlay-screen{background:#08122ceb;backdrop-filter:none}
+.overlay-panel,.guide-panel{width:64cqw;padding:2.7cqw;background:#182a3d;border:3px solid #72a0af;box-shadow:inset 0 0 0 3px #182a3d,inset 0 0 0 5px #294861,6px 6px #0b0d13;clip-path:none}
+.eyebrow.centered{font-size:.8cqw;letter-spacing:.12cqw;color:#72a0af}
+.screen-title,.death-panel .screen-title{font-size:4cqw;line-height:1.3;color:#f1d078;letter-spacing:0;margin:1.2cqw 0 1.6cqw;text-shadow:.25cqw .25cqw #690f18}
+.screen-description{font-size:1cqw;line-height:1.7;color:#c7c4b8;margin:0 0 1.6cqw}
+.stacked-actions{max-width:32cqw;gap:.7cqw}
+.settings-row{margin-top:2cqw;gap:2cqw}
+.toggle-label{font-size:1cqw;letter-spacing:0;color:#f3e7c9;gap:1cqw;position:relative}
+.toggle-track{width:5cqw;height:2.2cqw;background:#0b0d13;border:2px solid #46718a;padding:0;display:flex;align-items:center;justify-content:center}
+.toggle-track:after{content:'OFF';background:none;color:#8b8f8c;width:auto;height:auto;font-size:.9cqw;line-height:1;transition:none}
+.toggle-label input{width:5cqw;height:2.2cqw;opacity:0;position:absolute;left:0;top:0}
+.toggle-label input:checked+.toggle-track{background:#182a3d;border-color:#d6a84b}
+.toggle-label input:checked+.toggle-track:after{content:'ON';background:none;color:#f1d078;transform:none}
+.panel-footer{width:auto;gap:2cqw;margin-top:1.8cqw;padding-top:1.2cqw;border-top:2px solid #294861}.panel-footer .text-button{font-size:.85cqw}
+.arcade-options{display:grid;gap:1.1cqw;margin:1.7cqw auto 2cqw;width:33cqw}.arcade-options .toggle-label{height:2.4cqw;font-size:1.25cqw}
+.options-screen{z-index:40}.options-panel{width:58cqw}.options-panel .screen-description{font-size:.75cqw;letter-spacing:.1cqw}
+.victory-screen{background:#08122ceb}.victory-panel{width:73cqw}.victory-heading .screen-title{font-size:3.6cqw}.rank-seal{clip-path:none;background:#0b0d13;border:3px solid #d6a84b;box-shadow:3px 3px #0b0d13}.rank-seal strong{font-size:5cqw}
+.result-stats{border:2px solid #46718a;background:#182a3d;margin-bottom:1.7cqw}.result-stats strong{font-size:1.6cqw}.result-stats span{font-size:.7cqw}.new-record{color:#f1d078}
+.guide-panel{width:82cqw;padding:2cqw 3cqw}.guide-header{border-bottom:2px solid #46718a;padding-bottom:1.1cqw}.guide-header h2{font-size:2.7cqw;color:#f1d078}.guide-columns{gap:3.7cqw;padding:1.5cqw 0 1cqw}.guide-columns h3{font-size:.9cqw;margin-bottom:1cqw}.control-list dt{font-size:.8cqw}.control-list>div{height:3cqw}.combo-guide p{font-size:.88cqw}.combo-guide h4{font-size:.86cqw}.guide-bottom{border-top:2px solid #46718a}.guide-bottom p{font-size:.75cqw}kbd{border:2px solid #72a0af;background:#0b0d13;box-shadow:2px 2px #0b0d13}
+.message-toast{background:#182a3ded;border:2px solid #d6a84b;box-shadow:3px 3px #0b0d13}.message-toast p{font-size:.95cqw;color:#f1d078}.message-toast>span{display:none}
+.hud .hud-actions .icon-button{background:#182a3d;border:2px solid #46718a;box-shadow:2px 2px #0b0d13}
+.touch-actions .touch-button{border-radius:0}
+.touch-magic{position:absolute;right:3cqw;top:14cqw;display:flex;gap:1cqw}.touch-magic .touch-button{width:8cqw;height:3.5cqw;font-size:1cqw;background:#182a3ddd;border-color:#d6a84b;color:#f1d078}
+.arcade-machine:fullscreen{width:min(100vw,calc((100vh - 155px)*1.777778 + 48px));margin:auto;align-self:center;background:#18233a}
+@media(max-height:520px){.arcade-machine{width:min(98vw,calc((100svh - 65px)*1.777778 + 24px));padding:4px 8px 0;border-width:2px}.cabinet-marquee{height:22px;margin-bottom:4px;border-width:2px;gap:10px}.cabinet-marquee strong{font-size:14px;margin:0;letter-spacing:2px}.cabinet-marquee small,.marquee-wing,.coin-slot,.cabinet-player small{display:none}.cabinet-bezel{padding:3px;border-width:2px}.cabinet-controls{height:23px;padding:1px 12px;border-width:2px}.cabinet-player{font-size:8px}.cabinet-buttons i{height:14px;width:19px}.cabinet-stick{transform:scale(.55);transform-origin:left center;width:20px}.arcade-machine:before,.arcade-machine:after{display:none}.arcade-machine:fullscreen{width:min(100vw,calc((100vh - 65px)*1.777778 + 24px))}}
+@media(max-width:600px) and (min-height:521px){.arcade-machine{padding:7px 10px 0;width:96vw}.cabinet-marquee{height:48px;margin-bottom:8px}.cabinet-marquee strong{font-size:22px;letter-spacing:1px}.cabinet-marquee small{font-size:6px}.marquee-wing{display:none}.cabinet-bezel{padding:4px}.cabinet-controls{height:48px;gap:10px;padding:3px 8px}.cabinet-player{font-size:9px}.cabinet-player small{font-size:5px}.cabinet-buttons i{width:20px;height:17px}.coin-slot{font-size:5px;padding:5px}.arcade-machine:before,.arcade-machine:after{width:3px}.rotate-hint{bottom:7svh}}
+/* Photographic cabinet: live 16:9 game letterboxed inside the physical monitor. */
+body{background:#06080d;overflow:hidden}
+.arcade-machine,.arcade-machine:fullscreen{width:min(99vw,calc(97svh * 1.5));aspect-ratio:3/2;padding:0;border:0;background:url('./arcade-cabinet-photo.png') center/100% 100% no-repeat;box-shadow:0 0 60px #000;image-rendering:auto;margin:auto}
+.arcade-machine:before,.arcade-machine:after{display:none}
+.cabinet-marquee{position:absolute;left:20%;top:1.5%;width:60%;height:10.5%;margin:0;padding:0;border:0;box-shadow:none;background:none;display:flex;flex-direction:column;gap:0}
+.cabinet-marquee img{width:53%;height:auto;image-rendering:pixelated;filter:drop-shadow(0 0 8px #e9ac5525)}
+.cabinet-marquee small{bottom:7%;font-size:clamp(5px,.65vw,10px);letter-spacing:2px;color:#f1d078}
+.cabinet-bezel{position:absolute;left:18.5%;top:19.3%;width:63%;height:44%;padding:0;border:0;box-shadow:none;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:8px}
+.cabinet-bezel .game-shell{width:100%;max-height:100%;aspect-ratio:16/9;max-width:calc(44 / 63 * 100% * 1.185185);clip-path:none;border:0;box-shadow:none;flex:none}
+.cabinet-controls{position:absolute;left:0;right:0;bottom:0;height:0;padding:0;border:0;background:none;box-shadow:none;pointer-events:none}
+.cabinet-stick,.cabinet-buttons,.coin-slot,.cabinet-player{display:none}
+.game-title{width:64cqw;height:auto;line-height:0;margin:0}
+.game-title img{width:100%;height:auto;image-rendering:pixelated;display:block}
+.arcade-boot{position:absolute;inset:0;z-index:80;background:#020308;display:flex;align-items:center;justify-content:center;color:#e0e8db;flex-direction:column;font-family:VaePixel,monospace}
+.arcade-boot[hidden],#boot-brand[hidden]{display:none}
+#boot-log{position:absolute;left:9%;top:12%;font:1.6cqw/1.9 VaePixel,monospace;white-space:pre;margin:0}
+#boot-brand{width:58%;text-align:center}
+#boot-brand img{display:block;width:100%;image-rendering:pixelated}
+#boot-brand p{font:1.05cqw/1.6 VaePixel,monospace;color:#c7c4b8;margin:3cqw 0}
+#skip-boot{position:absolute;bottom:6%;right:5%;font:1cqw/1.6 VaePixel,monospace;color:#8b8f8c;border:0;background:none;padding:1cqw;cursor:pointer}
+#skip-boot:focus-visible{outline:2px solid #f1d078;color:#f1d078}
+@media(max-width:700px){.arcade-machine{width:100vw}.cabinet-marquee small{display:none}.rotate-hint{bottom:3svh}}
+/* Close framing: photograph cropped in CSS to the metal monitor surround only. */
+.arcade-machine,.arcade-machine:fullscreen{width:min(99vw,calc(97svh * 2.112621));aspect-ratio:1088/515;background-size:141.17647% 198.83495%;background-position:50% 31.43418%;background-repeat:no-repeat;padding:0;border:0}
+.cabinet-marquee,.cabinet-controls{display:none}
+.cabinet-bezel{left:5.33%;top:7.38%;width:87.87%;height:87.38%;border-radius:6px}
+.cabinet-bezel .game-shell{max-width:83.68%;width:100%;max-height:100%;aspect-ratio:16/9}
+.game-title{width:73cqw;margin:0 0 1cqw}
+.game-title img{image-rendering:pixelated;image-rendering:crisp-edges}
+.menu-content{top:6cqw}
+.menu-content .eyebrow{margin-bottom:2cqw}
+.game-subtitle{margin:1cqw 0 2.2cqw}
+.menu-actions{width:38cqw;gap:1cqw}
+.menu-actions .button{min-height:4.7cqw}
+.bitmap-label{display:block;image-rendering:pixelated;image-rendering:crisp-edges;max-width:100%;flex:none}
+.button .sr-only,.text-button .sr-only{display:block!important}
+.screen-title,.game-subtitle,.eyebrow{display:flex;justify-content:center}
+.toggle-label .bitmap-label{margin-left:.5cqw}
+.arcade-options{width:38cqw;gap:1.4cqw;margin:2cqw auto 2.5cqw}
+.arcade-options .toggle-label{height:3.2cqw;min-height:24px}
+.toggle-track{height:2.7cqw;width:5.5cqw}
+.toggle-label input{height:2.7cqw;width:5.5cqw}
+.options-panel{width:62cqw}
+.toggle-track:after{display:none}
+@media(max-width:700px){.arcade-machine{width:100vw}.menu-content{top:6cqw}}
+/* Every notification uses the same hard-edged bitmap lettering as menus. */
+.message-toast{max-width:80cqw;padding:1.3cqw 2cqw;transform:translateX(-50%);background:#182a3d;border:2px solid #d6a84b;box-shadow:3px 3px #0b0d13;animation:none}
+.message-toast p{margin:0;font-family:VaePixel,monospace;line-height:1;display:flex;justify-content:center}
+.bitmap-fragment{display:inline-block;vertical-align:middle;max-width:100%}
+#boot-log .bitmap-label{max-width:none}
+.studio-mark:after,.edition-label:after{display:none}
+.story-screen{position:absolute;inset:0;z-index:70;background:#050810}
+.story-screen[hidden]{display:none}
+#story-canvas{display:block;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+#skip-story-button{position:absolute;right:2cqw;top:2cqw;padding:1cqw;background:#050810;border:1px solid #d6a84b;color:#f1d078}
+#skip-story-button:focus-visible{outline:2px solid #f3e7c9}
+
+.game-entry-fade{position:absolute;inset:0;z-index:65;background:#000;opacity:0;pointer-events:none}.game-entry-fade.is-entering{animation:game-entry-reveal .75s ease-out both}@keyframes game-entry-reveal{from{opacity:1}to{opacity:0}}
+
+.credits-screen{position:absolute;inset:0;z-index:70;background:#050810}.credits-screen[hidden]{display:none}.credits-screen canvas{display:block;width:100%;height:100%;image-rendering:pixelated}.credits-screen .text-button{position:absolute;top:1.8cqw;right:1.8cqw;background:#050810e8;border:2px solid #d4ae68;padding:.65cqw .9cqw}

@@ -1,0 +1,267 @@
+{
+  "provider": "PixelLab",
+  "intro": [
+    "home",
+    "village_burning",
+    "oath",
+    "golden_fist",
+    "lightning",
+    "legion",
+    "tower"
+  ],
+  "ending": [
+    "cemetery",
+    "farewell"
+  ],
+  "scenes": [
+    {
+      "id": "home",
+      "duration": 4.5,
+      "caption": "BRUTUS LIVED IN A QUIET VILLAGE.",
+      "background": "assets/story/home-bg.png",
+      "sprite": "Brutus at home, standing beside a table, tired but peaceful, without his headband yet; sword resting safely at his side.",
+      "motion": "Calm idle breathing loop. Subtle chest breathing and a tiny head turn. Both feet remain planted and hand rests on the existing table. Preserve only the original hero, table, mug and sword. DO NOT add windows, clouds, magical light, lightning, smoke, symbols or any new objects. Clean transparent background throughout. Eight frames.",
+      "animationRevision": "v2",
+      "staging": {
+        "size": 224,
+        "x": 256,
+        "groundY": 236,
+        "anchorY": 217,
+        "static": true
+      },
+      "actor": "assets/story/home-actor.png",
+      "animation": {
+        "src": "assets/story/home-v2-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": true
+    },
+    {
+      "id": "village_burning",
+      "duration": 6.5,
+      "caption": "THE HORDE FROM THE TOWER OF DARKNESS BURNED HIS HOME AND DESTROYED HIS PEOPLE.",
+      "background": "assets/story/village_burning-bg.png",
+      "sprite": "Three invading monsters standing together on ONE shared ground baseline y222: small zombie at left, skeleton crossbow shooter in center aiming RIGHT, horned demon at right firmly standing on both feet with one arm pointing RIGHT casting a fire projectile. All three feet touch SAME baseline. Full bodies, no flying, no levitation. Weapons in ready pose, no flames or explosions attached to bodies. Transparent isolated group, no fire, no smoke, no projectiles or scenery.",
+      "motion": "Stationary ranged attack from ground level. Skeleton aims a crossbow RIGHT, pulls trigger, small recoil and reload. Demon points his right hand RIGHT casting a shot and recovers. Zombie stays grounded with small threatening arm motion. All three feet stay on the same fixed ground baseline throughout, no jumping or flying. Bodies stay intact, no flames, no fireballs, no smoke, no explosions, no disintegration. Projectiles are separate layers. Eight chronological frames, restrained movement.",
+      "actorRevision": "v2",
+      "staging": {
+        "size": 224,
+        "x": 180,
+        "groundY": 236,
+        "anchorY": 171,
+        "static": false
+      },
+      "actor": "assets/story/village_burning-v2-actor.png",
+      "animation": {
+        "src": "assets/story/village_burning-v2-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": true
+    },
+    {
+      "id": "oath",
+      "duration": 5.5,
+      "caption": "IN THE ASHES, HE SWORE REVENGE.",
+      "background": "assets/story/oath-bg.png",
+      "sprite": "Close-up of approved Brutus, muscular copper skin, intense eyes, strong jaw, beard and thick flowing BLACK HAIR fully covering his scalp and temples. He is NOT BALD. Both hands hold the red headband in front of his forehead below his visible black hairline, ready to tie it. Complete hands inside frame, portrait head and shoulders. Preserve his approved face and hair from reference images.",
+      "motion": "Brutus pulls the red band tight across his forehead, ties it behind his head, lowers his hands and fixes his gaze forward. Eight chronological frames, full hands always inside overscanned canvas.",
+      "actorRevision": "v2",
+      "staging": {
+        "size": 288,
+        "x": 256,
+        "groundY": 236,
+        "anchorY": 236,
+        "static": false
+      },
+      "actor": "assets/story/oath-v2-actor.png",
+      "animation": {
+        "src": "assets/story/oath-v2-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": false
+    },
+    {
+      "id": "golden_fist",
+      "duration": 6.5,
+      "caption": "BEFORE FACING THE HORDE, HE FORGED THE GOLDEN FIST.",
+      "background": "assets/story/golden_fist-bg.png",
+      "sprite": "Brutus wearing his tied red headband, in grounded fist training stance, sword stowed and both fists visible. Consistent hero proportions.",
+      "motion": "Eight-frame punch sequence: anticipation, planted hip rotation, extended fist, recoil and recovery. Separate golden fist celestial impact animation descending from sky with full knuckles intact.",
+      "staging": {
+        "size": 224,
+        "x": 256,
+        "groundY": 236,
+        "anchorY": 204,
+        "static": false
+      },
+      "actor": "assets/story/golden_fist-actor.png",
+      "animation": {
+        "src": "assets/story/golden_fist-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": true
+    },
+    {
+      "id": "lightning",
+      "duration": 6.5,
+      "caption": "HE LEARNED TO CALL THE JUDGMENT STORM.",
+      "background": "assets/story/lightning-bg.png",
+      "sprite": "Brutus in a powerful grounded casting stance, one arm raised toward the storm, flowing hair and red headband tails.",
+      "motion": "Eight frames: charge, raise hand, summon, hold and recovery. Separate stepped pixel lightning bolts strike the stone pillars; impact bursts and debris remain separate.",
+      "staging": {
+        "size": 224,
+        "x": 256,
+        "groundY": 236,
+        "anchorY": 220,
+        "static": false
+      },
+      "actor": "assets/story/lightning-actor.png",
+      "animation": {
+        "src": "assets/story/lightning-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": true
+    },
+    {
+      "id": "legion",
+      "duration": 6.5,
+      "caption": "THROUGH MEDITATION, HE MASTERED THE LEGION: AN ARMY OF HIMSELF.",
+      "background": "assets/story/legion-bg.png",
+      "sprite": "ONE SINGLE Brutus seated cross-legged in meditation, eyes closed, hands on knees, sword lying beside him. Only ONE character. No clones, no silhouettes, no other people, no shadows or symbols anywhere on the transparent canvas.",
+      "motion": "Single seated Brutus meditating with eyes closed. Subtle chest breathing, long hair and headband tails move slightly in the breeze. Hands remain on knees, feet and body fixed in place. No extra characters, no standing up, no sword attacks, no particles, no symbols, no scenery. Eight-frame idle breathing loop. Clones are rendered as a separate animated layer.",
+      "actorRevision": "v2",
+      "staging": {
+        "size": 224,
+        "x": 256,
+        "groundY": 228,
+        "anchorY": 176,
+        "static": false
+      },
+      "actor": "assets/story/legion-v2-actor.png",
+      "animation": {
+        "src": "assets/story/legion-v2-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": true
+    },
+    {
+      "id": "tower",
+      "duration": 4.5,
+      "caption": "THREE POWERS. ONE PURPOSE. THE TOWER OF DARKNESS WOULD FALL.",
+      "background": "assets/story/tower-bg.png",
+      "sprite": "Brutus in three-quarter rear view looking toward the tower, red headband tails visible, broad sword in hand and his permanent shield on his other arm.",
+      "motion": "Eight-frame purposeful walk toward the tower, stable shield attachment and no blade cropping.",
+      "staging": {
+        "size": 224,
+        "x": 256,
+        "groundY": 236,
+        "anchorY": 232,
+        "static": false
+      },
+      "actor": "assets/story/tower-actor.png",
+      "animation": {
+        "src": "assets/story/tower-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": true
+    },
+    {
+      "id": "cemetery",
+      "duration": 7.5,
+      "caption": "THE HORDE WAS BROKEN. BRUTUS RETURNED TO THOSE HE HAD LOST.",
+      "background": "assets/story/cemetery-bg.png",
+      "sprite": "ONE Brutus standing with both hands gripping the pommel of his broad sword held vertically upright in front of his chest, blade pointing down, sword tip ABOVE THE GROUND at knee height, poised to thrust it into the soil. Shield on his back. No scenery, no gravestones, no soil or ground, transparent actor only. Keep entire raised sword and hands in the canvas.",
+      "motion": "Brutus deliberately plants his sword in the earth: begin with sword tip raised at knee height, both hands push the pommel downward, blade visibly descends into the soil, knees bend with the thrust, then he bows his head and holds both hands on the planted sword. Single smooth solemn action, fixed feet position, no gravestones, no camera movement. Entire body and sword inside the frame.",
+      "actorRevision": "v2",
+      "staging": {
+        "size": 224,
+        "x": 256,
+        "groundY": 236,
+        "anchorY": 205,
+        "static": false
+      },
+      "actor": "assets/story/cemetery-v2-actor.png",
+      "animation": {
+        "src": "assets/story/cemetery-v2-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": false
+    },
+    {
+      "id": "farewell",
+      "duration": 7.5,
+      "caption": "VINDICATI ESTIS. ITE IN PACE, FRATRES.",
+      "translation": "You have been avenged. Go in peace, brothers.",
+      "background": "assets/story/farewell-bg.png",
+      "sprite": "Brutus kneeling by the planted sword, one hand on its pommel, head bowed. Maintain same grave arrangement and sword location as previous shot.",
+      "motion": "Eight-frame kneeling and settling sequence, then a subtle breathing hold. A gentle breeze moves the red headband tails. No exaggerated comedy in the closing scene.",
+      "staging": {
+        "size": 224,
+        "x": 256,
+        "groundY": 236,
+        "anchorY": 183,
+        "static": false
+      },
+      "actor": "assets/story/farewell-actor.png",
+      "animation": {
+        "src": "assets/story/farewell-anim.png",
+        "frames": 9,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "fps": 10
+      },
+      "loop": false
+    }
+  ],
+  "effects": {
+    "golden_fist": {
+      "src": "assets/story/golden-fist-fx.png"
+    },
+    "lightning": {
+      "src": "assets/story/lightning-fx.png"
+    },
+    "fire": {
+      "src": "assets/story/fire-fx-anim.png",
+      "frames": 9,
+      "frameWidth": 128,
+      "frameHeight": 192,
+      "fps": 10
+    },
+    "fire_shot": {
+      "src": "assets/story/fire-shot-fx.png"
+    },
+    "legion": {
+      "groundY": 228,
+      "anchorY": 171,
+      "src": "assets/story/legion-clone-anim.png",
+      "frames": 9,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "fps": 10
+    }
+  }
+}

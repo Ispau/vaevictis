@@ -1,0 +1,396 @@
+{
+  "images": {
+    "hero": "assets/hero.png",
+    "zombie": "assets/zombie.png",
+    "skeleton": "assets/skeleton.png",
+    "ogre": "assets/ogre.png",
+    "boss": "assets/boss.png",
+    "background": "assets/background.png",
+    "mountains": "assets/mountains.png",
+    "ruins": "assets/ruins.png",
+    "dragon": "assets/dragon.png",
+    "ghost": "assets/ghost.png",
+    "half_zombie": "assets/half_zombie.png",
+    "vampire": "assets/vampire.png",
+    "demon": "assets/demon.png",
+    "witch": "assets/witch.png",
+    "raven_orc": "assets/raven_orc.png",
+    "bone_king": "assets/bone_king.png",
+    "werewolf": "assets/werewolf.png",
+    "shield": "assets/shield.png",
+    "potions": "assets/potions.png",
+    "weapons_props": "assets/weapons_props.png",
+    "cemetery": "assets/cemetery.png",
+    "swamp": "assets/swamp.png",
+    "dark_forest": "assets/dark_forest.png",
+    "abandoned_village": "assets/abandoned_village.png",
+    "uprooted_tree": "assets/uprooted_tree.png",
+    "tiles": "assets/tiles.png",
+    "hero_portrait": "assets/hero-portrait-pixel.png",
+    "sky_fist": "assets/sky-fist-pixel.png",
+    "tree_prop": "assets/tree-pixel.png",
+    "barrel_prop": "assets/barrel-pixel.png",
+    "storm_bolt": "assets/story/lightning-fx.png"
+  },
+  "animations": {
+    "hero_run": {
+      "src": "assets/hero_run.png",
+      "frames": 8,
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "fps": 12
+    },
+    "hero_attack_2": {
+      "src": "assets/hero_attack_2-overscan.png",
+      "frames": 8,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked"
+    },
+    "hero_idle": {
+      "src": "assets/hero_idle.png",
+      "frames": 4,
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "fps": 6
+    },
+    "hero_attack_1": {
+      "src": "assets/hero_forward_cut.png",
+      "frames": 8,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked",
+      "curatedFrom": "hero_heavy-overscan",
+      "sourceFrameOrder": [
+        7,
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "hero_heavy": {
+      "src": "assets/hero_heavy-overscan.png",
+      "frames": 8,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked"
+    },
+    "hero_jump": {
+      "src": "assets/hero_jump.png",
+      "frames": 8,
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "fps": 12
+    },
+    "hero_attack_3": {
+      "src": "assets/hero_attack_3-overscan.png",
+      "frames": 8,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 4,
+      "revision": "overscan-palette-locked"
+    },
+    "hero_dash": {
+      "src": "assets/hero_dash.png",
+      "frames": 4,
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "fps": 16
+    },
+    "hero_defend": {
+      "src": "assets/hero_defend.png",
+      "frames": 4,
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "fps": 10
+    },
+    "hero_hurt_death": {
+      "src": "assets/hero_hurt_death.png",
+      "frames": 8,
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "fps": 10
+    },
+    "skeleton_attack": {
+      "src": "assets/skeleton_attack.png",
+      "frames": 6,
+      "frameWidth": 80,
+      "frameHeight": 80,
+      "fps": 12
+    },
+    "werewolf_attack": {
+      "src": "assets/werewolf_attack-overscan.png",
+      "frames": 8,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked"
+    },
+    "werewolf_tree_attack": {
+      "src": "assets/werewolf_tree_attack.png",
+      "frames": 8,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "fps": 12
+    },
+    "zombie_attack": {
+      "src": "assets/zombie_attack.png",
+      "frames": 6,
+      "frameWidth": 80,
+      "frameHeight": 80,
+      "fps": 10
+    },
+    "demon_attack": {
+      "src": "assets/demon_attack.png",
+      "frames": 6,
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "fps": 12
+    },
+    "orc_roar": {
+      "src": "assets/orc_roar.png",
+      "frames": 8,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "fps": 10
+    },
+    "witch_attack": {
+      "src": "assets/witch_attack.png",
+      "frames": 6,
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "fps": 10
+    },
+    "bone_king_attack": {
+      "src": "assets/bone_king_attack.png",
+      "frames": 8,
+      "frameWidth": 160,
+      "frameHeight": 160,
+      "fps": 10
+    },
+    "vampire_attack": {
+      "src": "assets/vampire_attack.png",
+      "frames": 6,
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "fps": 12
+    },
+    "hero_drink": {
+      "src": "assets/hero_drink-overscan.png",
+      "frames": 8,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked"
+    },
+    "hero_death": {
+      "src": "assets/hero_death-overscan.png",
+      "frames": 12,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked"
+    },
+    "hero_transform": {
+      "src": "assets/hero_transform-overscan.png",
+      "frames": 14,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked"
+    },
+    "hero_revert": {
+      "src": "assets/hero_transform-overscan.png",
+      "frames": 14,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 3,
+      "revision": "overscan-palette-locked",
+      "reverse": true
+    },
+    "hero_shield_idle": {
+      "src": "assets/hero_shield_idle.png",
+      "frames": 1,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "hero_shield_attack_1": {
+      "src": "assets/hero_shield_attack_1.png",
+      "frames": 6,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "hero_shield_attack_2": {
+      "src": "assets/hero_shield_attack_2.png",
+      "frames": 6,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "hero_shield_attack_3": {
+      "src": "assets/hero_shield_attack_3.png",
+      "frames": 6,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "hero_shield_heavy": {
+      "src": "assets/hero_shield_heavy.png",
+      "frames": 6,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "hero_shield_airattack": {
+      "src": "assets/hero_shield_airattack.png",
+      "frames": 6,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "hero_shield_special": {
+      "src": "assets/hero_shield_special.png",
+      "frames": 6,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "hero_shield_defend": {
+      "src": "assets/hero_shield_defend.png",
+      "frames": 6,
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "fps": 12,
+      "pivotX": 96,
+      "pivotY": 174,
+      "pixelScale": 1.5,
+      "contactFrame": 2,
+      "includesShield": true,
+      "revision": "integrated-shield-v2",
+      "provider": "built-in image generation"
+    },
+    "torch_flame": {
+      "src": "assets/props/torch-complete-anim.png",
+      "frames": 9,
+      "frameWidth": 96,
+      "frameHeight": 128,
+      "fps": 10,
+      "provider": "PixelLab",
+      "completeProp": true
+    }
+  },
+  "provider": "PixelLab",
+  "title": "VAE VICTIS",
+  "style": "retro neo-geo arcade dark fantasy",
+  "tiles": {
+    "tileSize": 32,
+    "renderSize": 48,
+    "columns": 4,
+    "source": "PixelLab sidescroller tile generator"
+  },
+  "spriteMetadata": {
+    "werewolf": {
+      "pivotX": 64,
+      "pivotY": 136,
+      "pixelScale": 1.5,
+      "bodyHeight": 122
+    }
+  },
+  "productionNotes": {
+    "shield_v2": "All attack/defence cells contain body, sword and forearm shield together; no runtime floating overlay. Connected pose extraction preserves complete blades across nominal source cells."
+  }
+}

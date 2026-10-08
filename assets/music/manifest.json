@@ -1,0 +1,39 @@
+{
+  "composer": "Original procedural composition",
+  "synthesis": "Same Web Audio score and instruments as the game, with listening export gain and fades",
+  "tracks": [
+    {
+      "scene": "intro",
+      "title": "The Oath of Brutus",
+      "bpm": 84,
+      "src": "assets/music/vae-victis-intro.wav",
+      "seconds": 47.714285714285715,
+      "sampleRate": 44100,
+      "channels": 2,
+      "peak": 0.879974365234375,
+      "rms": 0.03911491540964202
+    },
+    {
+      "scene": "ending",
+      "title": "The Last Promise",
+      "bpm": 68,
+      "src": "assets/music/vae-victis-ending.wav",
+      "seconds": 58.470589569161,
+      "sampleRate": 44100,
+      "channels": 2,
+      "peak": 0.6602783203125,
+      "rms": 0.16506098456787355
+    },
+    {
+      "scene": "credits",
+      "title": "Victory of the Golden Fist",
+      "bpm": 108,
+      "src": "assets/music/vae-victis-credits.wav",
+      "seconds": 37.55555555555556,
+      "sampleRate": 44100,
+      "channels": 2,
+      "peak": 0.566375732421875,
+      "rms": 0.04971839777129322
+    }
+  ]
+}

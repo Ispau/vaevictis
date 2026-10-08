@@ -1,0 +1,5 @@
+API.txt
+.env*
+*.pem
+*.key
+node_modules/
